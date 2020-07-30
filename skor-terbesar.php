@@ -1,27 +1,41 @@
 <?php
 function skor_terbesar($arr){
 //kode di sini
-/*
-1. buat array assosiatif berdasarkan nama kelas peserta
-2. bandingkan nilai nilai peserta berdasarkan kelas yang sama
-3. cari satu orang peserta dengan nilai tertinggi pada setiap kelas
-4. masukkan nilai dalam array penampung 
-*/
 $arr_output = [];
-for( $i=0; $i < count($arr)-1; $i++ ) {
-  for( $j=$i+1; $j < count($arr); $j++ ) {
-    if( $arr[$i]["kelas"] == $arr[$j]["kelas"] && $arr[$i]["nilai"] > $arr[$j]["nilai"] ) {
+for( $i=1; $i < count($arr)-1; $i++ ) {
+  $j = 0;
+    if( $arr[$i]["kelas"] == "Laravel" ) {
+      if( $arr[$i]["nilai"] > $arr[$j]["nilai"] ) {
         $arr_output[] = [
           $arr[$i]["kelas"] => $arr[$i]
         ];
-      
-    } elseif( $arr[$i]["kelas"] == $arr[$j]["kelas"] && $arr[$i]["nilai"] < $arr[$j]["nilai"] ) {
+      } elseif( $arr[$i]["nilai"] < $arr[$j]["nilai"] ) {
         $arr_output[] = [
           $arr[$j]["kelas"] => $arr[$j]
-        ]; 
-      
+        ];
+      }     
+    } elseif( $arr[$i]["kelas"] == "React JS" ) {
+      if( $arr[$i]["nilai"] > $arr[$j]["nilai"] ) {
+        $arr_output[] = [
+          $arr[$i]["kelas"] => $arr[$i]
+        ];
+      } elseif( $arr[$i]["nilai"] < $arr[$j]["nilai"] ) {
+        $arr_output[] = [
+          $arr[$j]["kelas"] => $arr[$j]
+        ];
+      }     
+    } elseif( $arr[$i]["kelas"] == "React Native" ) {
+      if( $arr[$i]["nilai"] > $arr[$j]["nilai"] ) {
+        $arr_output[] = [
+          $arr[$i]["kelas"] => $arr[$i]
+        ];
+      } elseif( $arr[$i]["nilai"] < $arr[$j]["nilai"] ) {
+        $arr_output[] = [
+          $arr[$j]["kelas"] => $arr[$j]
+        ];
+      }     
     }
-  }
+  
 }
 
 return$arr_output;
